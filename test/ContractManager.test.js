@@ -20,11 +20,11 @@ describe('ContractManager :: ', () => {
     expect(func).to.throw(Error, 'ABI is required parameter')
   })
 
-  it('throw without bytecode', () => {
+  it('throw with non hex bytecode', () => {
     const func = () => {
-      global.manager.newContract([])
+      global.manager.newContract([], 'test')
     }
-    expect(func).to.throw(Error, 'Bytecode is required parameter')
+    expect(func).to.throw(Error, 'Bytecode have to be a HEX string')
   })
 
   it('should return Contract', () => {

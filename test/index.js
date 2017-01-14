@@ -1,7 +1,8 @@
 'use strict'
 
-const expect = require('chai').expect
+const erisContracts = require('../index')
+const config = require('./config')
 
 before(() => {
-  expect(true)
+  global.manager = erisContracts.newContractManager(config.rpc, config.account)
 })

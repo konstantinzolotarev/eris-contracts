@@ -3,4 +3,5 @@
 --slow 50
 --check-leaks
 --invert
+--globals manager
 --timeout 60000

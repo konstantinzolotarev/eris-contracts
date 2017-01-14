@@ -10,7 +10,7 @@ describe('ContractManager :: ', () => {
   })
 
   it('should create erisdb instance', () => {
-    expect(global.manager._erisdb).to.be.an('object')
+    expect(global.manager._erisdb).to.be.an('object') // eslint-disable-line
   })
 
   it('throw without abi', () => {

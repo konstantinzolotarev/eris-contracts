@@ -1,0 +1,46 @@
+{
+  "name": "eris-contracts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/konstantinzolotarev/eris-contracts.git"
+  },
+  "author": "Konstantin Zolotarev",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/konstantinzolotarev/eris-contracts/issues"
+  },
+  "homepage": "https://github.com/konstantinzolotarev/eris-contracts#readme",
+  "dependencies": {
+    "eris-db-promise": "^1.0.1",
+    "lodash": "^4.17.4",
+    "web3": "^0.18.2"
+  },
+  "eslintConfig": {
+    "extends": "trails",
+    "rules": {
+      "indent": [
+        "error",
+        2,
+        {
+          "SwitchCase": 1
+        }
+      ]
+    }
+  },
+  "devDependencies": {
+    "babel-preset-latest": "^6.16.0",
+    "babelify": "^7.3.0",
+    "browserify": "^13.3.0",
+    "chai": "^3.5.0",
+    "eslint": "^3.13.1",
+    "eslint-config-trails": "^2.0.6",
+    "mocha": "^3.2.0",
+    "solc": "^0.3.4"
+  }
+}

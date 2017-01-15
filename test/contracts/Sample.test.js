@@ -101,6 +101,22 @@ describe('SampleContract :: ', () => {
           expect(result.toNumber()).to.be.eq(3)
         })
     })
+
+    it('should work with callback', (done) => {
+      SampleContract
+        .at(contractAddress)
+        .then((contract) => {
+          contract.add(1, 2, (err, res) => {
+            if (err)
+              return done(err)
+
+            expect(res.toNumber()).to.be.eq(3)
+            done()
+          })
+        })
+        .catch((err) => done(err))
+    })
+
   })
 
 })

@@ -96,6 +96,16 @@ describe('GetSetContract :: ', () => {
         })
     })
 
+    it('should have something method', () => {
+      return SampleContract
+        .at(contractAddress)
+        .then((contract) => contract.something.call())
+        .then((value) => {
+          expect(value).to.be.an('object')
+          expect(value.toNumber()).to.be.eql(0)
+        })
+    })
+
     it('setSomething() should add numbers', () => {
       return SampleContract
         .at(contractAddress)

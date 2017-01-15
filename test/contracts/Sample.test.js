@@ -2,6 +2,7 @@
 
 const expect = require('chai').expect
 const solc = require('solc')
+const config = require('../config')
 
 const Sample = `
   contract SampleContract {
@@ -32,6 +33,29 @@ describe('SampleContract :: ', () => {
 
   describe('SampleContract.at() :: ', () => {
 
+    let contractAddress
+
+    before(() => {
+      const eris = global.manager.getEris()
+      expect(eris).to.be.an('object')
+      return eris
+        .unsafe
+        .transactAndHold(config.account.privKey, SampleContract.bytecode, '')
+        .then((info) => {
+          expect(info).to.be.an('object')
+            .and.to.contain.all.keys([
+              'tx_id', 'call_data'
+            ])
+
+          expect(info.call_data).to.be.an('object')
+            .and.to.contain.all.keys([
+              'callee', 'caller'
+            ])
+
+          contractAddress = info.call_data.callee
+        })
+    })
+
     it('reject without address', () => {
       return SampleContract
         .at()
@@ -49,6 +73,32 @@ describe('SampleContract :: ', () => {
         .catch((err) => {
           expect(err).to.be.an('error')
             .and.to.have.property('message', 'Address is required parameter')
+        })
+    })
+
+    it('should create new contract', () => {
+      return SampleContract
+        .at(contractAddress)
+        .then((contract) => {
+          expect(contract).to.be.an('object')
+            .and.to.have.property('address', contractAddress)
+        })
+    })
+
+    it('should have add() method', () => {
+      return SampleContract
+        .at(contractAddress)
+        .then((contract) => {
+          expect(contract.add).to.be.a('function')
+        })
+    })
+
+    it('add() should add numbers', () => {
+      return SampleContract
+        .at(contractAddress)
+        .then((contract) => contract.add(1, 2))
+        .then((result) => {
+          expect(result.toNumber()).to.be.eq(3)
         })
     })
   })

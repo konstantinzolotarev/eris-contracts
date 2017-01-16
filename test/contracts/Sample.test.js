@@ -119,4 +119,16 @@ describe('SampleContract :: ', () => {
 
   })
 
+  describe('SampleContract.new() :: ', () => {
+
+    it('should deploy new contract', () => {
+      return SampleContract
+        .new()
+        .then((contract) => {
+          expect(contract).to.be.an('object')
+            .and.to.have.property('address')
+        })
+    })
+  })
+
 })

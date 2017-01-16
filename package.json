@@ -20,7 +20,7 @@
   "dependencies": {
     "eris-db-promise": "^1.0.1",
     "lodash": "^4.17.4",
-    "web3": "^0.18.2"
+    "web3": "eris-ltd/web3.js#cdf7bec7417988f9587d808796eb2872e0a8df23"
   },
   "eslintConfig": {
     "extends": "trails",

@@ -9,8 +9,8 @@ const GetSetContract = `
 
     uint public something;
 
-    function setSomething(uint level) {
-      something = level;
+    function setSomething(uint newSome) {
+      something = newSome;
     }
   }
 `
@@ -88,6 +88,16 @@ describe('GetSetContract :: ', () => {
         })
     })
 
+    it('should set default value for something', () => {
+      return SampleContract
+        .at(contractAddress)
+        .then((contract) => contract.something.call())
+        .then((value) => {
+          expect(value).to.be.an('object')
+          expect(value.toNumber()).to.be.eq(0)
+        })
+    })
+
     it('should have setSomething() method', () => {
       return SampleContract
         .at(contractAddress)
@@ -96,24 +106,27 @@ describe('GetSetContract :: ', () => {
         })
     })
 
-    it('should have something method', () => {
-      return SampleContract
-        .at(contractAddress)
-        .then((contract) => contract.something.call())
-        .then((value) => {
-          expect(value).to.be.an('object')
-          expect(value.toNumber()).to.be.eql(0)
-        })
-    })
-
-    it('setSomething() should add numbers', () => {
+    it('should have setSomething()', () => {
       return SampleContract
         .at(contractAddress)
         .then((contract) => contract.setSomething(1))
         .then(() => {
-          console.log('==========================')
-          console.log(123)
-          console.log('==========================')
+          expect(true)
+        })
+    })
+
+    it('should have something constant and be callable with callback', (done) => {
+      SampleContract
+        .at(contractAddress)
+        .then((contract) => {
+          contract.something.call((err, value) => {
+            if (err)
+              return done(err)
+
+            expect(value).to.be.an('object')
+            expect(value.toNumber()).to.be.eql(1)
+            done()
+          })
         })
     })
 

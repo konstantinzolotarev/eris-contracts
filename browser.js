@@ -1,5 +1,5 @@
 'use strict'
 
-const ErisDBFactory = require('./index')
+const ErisContractManager = require('./index')
 
-global.ErisDBFactory = ErisDBFactory
+global.ErisContractManager = ErisContractManager

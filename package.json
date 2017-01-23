@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "browserify": "node ./node_modules/browserify/bin/cmd.js ./browser.js -t [ babelify --comments false ] -o ./dist/index.js",
     "test": "eslint . && NODE_ENV=testing ./node_modules/mocha/bin/mocha",
     "mocha": "NODE_ENV=testing ./node_modules/mocha/bin/mocha"
   },

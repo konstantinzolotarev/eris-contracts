@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "prepublish": "node ./node_modules/browserify/bin/cmd.js ./browser.js -t [ babelify --comments false ] -o ./dist/index.js",
+    "prepublish": "rm -rf ./dist && mkdir dist && node ./node_modules/browserify/bin/cmd.js ./browser.js -t [ babelify --comments false ] -o ./dist/index.js",
     "browserify": "node ./node_modules/browserify/bin/cmd.js ./browser.js -t [ babelify --comments false ] -o ./dist/index.js",
     "test": "eslint . && NODE_ENV=testing ./node_modules/mocha/bin/mocha",
     "mocha": "NODE_ENV=testing ./node_modules/mocha/bin/mocha"

@@ -2,9 +2,9 @@
 (function (global){
 'use strict';
 
-var ErisDBFactory = require('./index');
+var ErisContractManager = require('./index');
 
-global.ErisDBFactory = ErisDBFactory;
+global.ErisContractManager = ErisContractManager;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"./index":2}],2:[function(require,module,exports){
